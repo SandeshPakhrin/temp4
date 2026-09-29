@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Inner Himalaya Trek & Tour | Unforgettable Mountain Expeditions
+    </title>
+
+    <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Syne", "sans-serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                emerald: "#0f766e",
+                teal: "#0d9488",
+                accent: "#f97316", // Warm Himalayan Sunrise Orange
+                charcoal: "#0b1315",
+                surface: "#0f1c1e",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .glass-nav {
+        background: rgba(11, 19, 21, 0.75);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .hero-mask {
+        background: linear-gradient(
+          180deg,
+          rgba(11, 19, 21, 0.2) 0%,
+          rgba(11, 19, 21, 0.85) 85%,
+          #0b1315 100%
+        );
+      }
+    </style>
+  </head>
+  <body
+    class="bg-brand-charcoal text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-brand-accent selection:text-white"
+  >
+    <!-- Floating WhatsApp Widget -->
+    <a
+      href="https://wa.me/97798000000"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-transform duration-300"
+    >
+      <i data-lucide="message-circle" class="w-6 h-6"></i>
+      <span class="text-sm font-semibold hidden md:inline">Quick Chat</span>
+    </a>
+
+    <!-- Top Bar & Navigation -->
+    <header
+      class="fixed top-0 left-0 w-full z-40 transition-all duration-300"
+      id="mainHeader"
+    >
+      <div class="glass-nav border-b border-white/10">
+        <div
+          class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+        >
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-3 group">
+            <div
+              class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent to-emerald-400 p-[1px] shadow-lg"
+            >
+              <div
+                class="w-full h-full bg-brand-charcoal rounded-xl flex items-center justify-center"
+              >
+                <i
+                  data-lucide="mountain-snow"
+                  class="w-5 h-5 text-brand-accent group-hover:scale-110 transition-transform"
+                ></i>
+              </div>
+            </div>
+            <div>
+              <span
+                class="font-display font-bold text-lg tracking-wider text-white block leading-tight"
+                >INNER HIMALAYA</span
+              >
+              <span class="text-[10px] tracking-widest text-slate-400 uppercase"
+                >Trek & Tour Pvt. Ltd.</span
+              >
+            </div>
+          </a>
+
+          <!-- Desktop Menu -->
+          <nav
+            class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300"
+          >
+            <a
+              href="#destinations"
+              class="hover:text-brand-accent transition-colors"
+              >Destinations</a
+            >
+            <a
+              href="#packages"
+              class="hover:text-brand-accent transition-colors"
+              >Trek Styles</a
+            >
+            <a href="#about" class="hover:text-brand-accent transition-colors"
+              >Our Story</a
+            >
+            <a href="#reviews" class="hover:text-brand-accent transition-colors"
+              >Testimonials</a
+            >
+            <a href="#contact" class="hover:text-brand-accent transition-colors"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- CTA & Quick Contacts -->
+          <div class="flex items-center gap-4">
+            <a
+              href="#contact"
+              class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-brand-accent to-orange-500 hover:opacity-90 text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-all shadow-lg shadow-orange-500/20"
+            >
+              Book an Expedition
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+            <button class="lg:hidden text-white p-2" id="mobileMenuBtn">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden"
+    >
+      <div class="absolute inset-0 -z-10">
+        <img
+          src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2071&auto=format&fit=crop"
+          alt="Himalayan peaks at dawn"
+          class="w-full h-full object-cover object-center scale-105"
+          id="heroImage"
+        />
+        <div class="absolute inset-0 hero-mask"></div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-6 text-center z-10">
+        <div
+          class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-xs font-semibold text-orange-300 mb-6 backdrop-blur-md"
+        >
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+          <span>Authentic Himalayan Journeys</span>
+        </div>
+
+        <h1
+          class="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-white leading-tight md:leading-[1.1] mb-6"
+        >
+          We Live.
+          <span
+            class="bg-gradient-to-r from-orange-400 via-amber-200 to-emerald-300 bg-clip-text text-transparent"
+            >We Trek.</span
+          >
+        </h1>
+
+        <p
+          class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-10 leading-relaxed font-normal"
+        >
+          Curating immersive, ethical, and tailor-made high-altitude adventures
+          across the world's most breathtaking peaks.
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="#destinations"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-orange-600 text-white font-semibold px-8 py-3.5 rounded-full transition-all shadow-xl shadow-orange-500/30"
+          >
+            Explore Popular Treks
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+          <a
+            href="#about"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium px-8 py-3.5 rounded-full transition-all backdrop-blur-sm"
+          >
+            Why Travel With Us?
+          </a>
+        </div>
+
+        <!-- Quick Highlights Bar -->
+        <div
+          class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto border-t border-white/10 pt-8 text-left"
+        >
+          <div>
+            <p class="text-2xl font-bold font-display text-white">100%</p>
+            <p class="text-xs text-slate-400 uppercase tracking-wider">
+              Certified Guides
+            </p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold font-display text-white">15+ Yrs</p>
+            <p class="text-xs text-slate-400 uppercase tracking-wider">
+              Alpine Experience
+            </p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold font-display text-white">99.4%</p>
+            <p class="text-xs text-slate-400 uppercase tracking-wider">
+              Summit Success
+            </p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold font-display text-brand-accent">
+              10% Given
+            </p>
+            <p class="text-xs text-slate-400 uppercase tracking-wider">
+              Profit to Local NGOs
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us & Value Props -->
+    <section
+      id="about"
+      class="py-24 bg-brand-surface relative border-t border-white/5"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <span
+              class="text-brand-accent font-semibold text-xs tracking-widest uppercase"
+              >About Inner Himalaya</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-display font-bold text-white mt-2 mb-6"
+            >
+              Pioneering Journeys Across the Highest Horizons
+            </h2>
+            <p class="text-slate-300 leading-relaxed mb-6">
+              Inner Himalaya Trek & Tour is a licensed trekking agency nestled
+              in the foothills of Nepal. We specialize in bespoke private
+              expeditions, classic tea-house routes, and remote mountaineering
+              adventures suited for all levels of mountain lovers.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0"
+                >
+                  <i
+                    data-lucide="shield-check"
+                    class="w-5 h-5 text-brand-accent"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white">
+                    Safety-First Logistics
+                  </h4>
+                  <p class="text-sm text-slate-400">
+                    High-altitude medical kits, satellite comms, and
+                    wilderness-first-aid certified team leaders.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0"
+                >
+                  <i
+                    data-lucide="heart-handshake"
+                    class="w-5 h-5 text-emerald-400"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white">
+                    Responsible & Sustainable Tourism
+                  </h4>
+                  <p class="text-sm text-slate-400">
+                    We champion zero-trace trails, fair porter welfare
+                    standards, and invest 10% of company profits into remote
+                    education NGOs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=1200&auto=format&fit=crop"
+                alt="Trekker overlooking mountains"
+                class="w-full h-[460px] object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div
+              class="absolute -bottom-6 -left-6 bg-brand-charcoal/90 backdrop-blur-md border border-white/15 p-6 rounded-2xl hidden sm:block max-w-xs shadow-2xl"
+            >
+              <p
+                class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1"
+              >
+                Impact Driven
+              </p>
+              <p class="text-sm text-slate-200">
+                Every booking directly funds seasonal school gear for children
+                across Solukhumbu and Manang.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Expeditions (Cards Grid) -->
+    <section id="destinations" class="py-24 bg-brand-charcoal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between mb-14"
+        >
+          <div>
+            <span
+              class="text-brand-accent font-semibold text-xs tracking-widest uppercase"
+              >Iconic Routes</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-display font-bold text-white mt-2"
+            >
+              Popular Destinations
+            </h2>
+          </div>
+          <a
+            href="#contact"
+            class="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
+          >
+            Browse All Itineraries
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="group bg-brand-surface rounded-2xl overflow-hidden border border-white/10 hover:border-brand-accent/50 transition-all duration-300 flex flex-col"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=800&auto=format&fit=crop"
+                alt="Annapurna Base Camp"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <span
+                class="absolute top-4 left-4 bg-brand-charcoal/80 backdrop-blur-md text-orange-400 text-xs font-semibold px-3 py-1 rounded-full border border-white/10"
+              >
+                12 Days
+              </span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div
+                  class="flex items-center gap-2 text-xs text-slate-400 mb-2"
+                >
+                  <i
+                    data-lucide="map-pin"
+                    class="w-3.5 h-3.5 text-brand-accent"
+                  ></i>
+                  <span>Annapurna Sanctuary</span>
+                </div>
+                <h3 class="text-xl font-display font-bold text-white mb-2">
+                  Annapurna Base Camp (ABC)
+                </h3>
+                <p class="text-sm text-slate-400 mb-6 line-clamp-2">
+                  A breathtaking amphitheater of 7,000m and 8,000m peaks,
+                  passing through Gurung villages and rhododendron forests.
+                </p>
+              </div>
+              <div
+                class="pt-4 border-t border-white/10 flex items-center justify-between"
+              >
+                <div>
+                  <span class="text-xs text-slate-500 block">From</span>
+                  <span class="text-lg font-bold text-white">$890</span>
+                </div>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500 text-emerald-300 hover:text-white border border-emerald-500/30 px-4 py-2 rounded-lg transition-all"
+                >
+                  Details
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="group bg-brand-surface rounded-2xl overflow-hidden border border-white/10 hover:border-brand-accent/50 transition-all duration-300 flex flex-col"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
+                alt="Everest Base Camp"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <span
+                class="absolute top-4 left-4 bg-brand-charcoal/80 backdrop-blur-md text-orange-400 text-xs font-semibold px-3 py-1 rounded-full border border-white/10"
+              >
+                14 Days
+              </span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div
+                  class="flex items-center gap-2 text-xs text-slate-400 mb-2"
+                >
+                  <i
+                    data-lucide="map-pin"
+                    class="w-3.5 h-3.5 text-brand-accent"
+                  ></i>
+                  <span>Khumbu Region</span>
+                </div>
+                <h3 class="text-xl font-display font-bold text-white mb-2">
+                  Everest Base Camp & Kala Patthar
+                </h3>
+                <p class="text-sm text-slate-400 mb-6 line-clamp-2">
+                  Stand face to face with Mount Everest, explore Namche Bazaar,
+                  and experience ancient Sherpa culture.
+                </p>
+              </div>
+              <div
+                class="pt-4 border-t border-white/10 flex items-center justify-between"
+              >
+                <div>
+                  <span class="text-xs text-slate-500 block">From</span>
+                  <span class="text-lg font-bold text-white">$1,350</span>
+                </div>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500 text-emerald-300 hover:text-white border border-emerald-500/30 px-4 py-2 rounded-lg transition-all"
+                >
+                  Details
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Mountain Flight -->
+          <div
+            class="group bg-brand-surface rounded-2xl overflow-hidden border border-white/10 hover:border-brand-accent/50 transition-all duration-300 flex flex-col"
+          >
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+                alt="Scenic Mountain Flight"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <span
+                class="absolute top-4 left-4 bg-brand-charcoal/80 backdrop-blur-md text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full border border-white/10"
+              >
+                1 Hour
+              </span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div
+                  class="flex items-center gap-2 text-xs text-slate-400 mb-2"
+                >
+                  <i
+                    data-lucide="plane-takeoff"
+                    class="w-3.5 h-3.5 text-brand-accent"
+                  ></i>
+                  <span>Kathmandu Departure</span>
+                </div>
+                <h3 class="text-xl font-display font-bold text-white mb-2">
+                  Everest Scenic Mountain Flight
+                </h3>
+                <p class="text-sm text-slate-400 mb-6 line-clamp-2">
+                  Get eye-level with the highest peaks in the world without
+                  months of training. Window seats guaranteed.
+                </p>
+              </div>
+              <div
+                class="pt-4 border-t border-white/10 flex items-center justify-between"
+              >
+                <div>
+                  <span class="text-xs text-slate-500 block">From</span>
+                  <span class="text-lg font-bold text-white">$210</span>
+                </div>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500 text-emerald-300 hover:text-white border border-emerald-500/30 px-4 py-2 rounded-lg transition-all"
+                >
+                  Details
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section
+      id="reviews"
+      class="py-24 bg-brand-surface relative overflow-hidden"
+    >
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <span
+          class="text-brand-accent font-semibold text-xs tracking-widest uppercase"
+          >Verified Climbers</span
+        >
+        <h2
+          class="text-3xl sm:text-4xl font-display font-bold text-white mt-2 mb-12"
+        >
+          Words From The Trail
+        </h2>
+
+        <div
+          class="bg-brand-charcoal/70 border border-white/10 p-8 sm:p-12 rounded-3xl backdrop-blur-md shadow-2xl relative"
+        >
+          <i
+            data-lucide="quote"
+            class="w-12 h-12 text-orange-500/20 mx-auto mb-6"
+          ></i>
+          <p
+            class="text-base sm:text-xl text-slate-200 italic leading-relaxed mb-8"
+          >
+            "The Annapurna Base Camp trek with Inner Himalaya was life-changing.
+            From safety measures to authentic teahouse stays and knowledgeable
+            Sherpa leaders, every detail was effortless. I've trekked in
+            Patagonia and the Alps, but this surpassed everything."
+          </p>
+          <div class="flex items-center justify-center gap-4">
+            <div
+              class="w-12 h-12 rounded-full overflow-hidden border border-brand-accent"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+                alt="Client Avatar"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="text-left">
+              <h4 class="font-display font-bold text-white text-sm">
+                Shannon Malis
+              </h4>
+              <p class="text-xs text-slate-400">
+                Annapurna Circuit • Melbourne, Australia
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Affiliations & Accreditations -->
+    <section class="py-12 bg-brand-charcoal border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <p
+          class="text-xs uppercase tracking-widest text-slate-400 mb-8 font-medium"
+        >
+          Licensed & Certified by International & National Mountaineering Bodies
+        </p>
+        <div
+          class="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-75 grayscale hover:grayscale-0 transition-all"
+        >
+          <span
+            class="font-display font-bold text-slate-300 text-sm tracking-wide"
+            >NTB (Nepal Tourism Board)</span
+          >
+          <span
+            class="font-display font-bold text-slate-300 text-sm tracking-wide"
+            >TAAN Certified</span
+          >
+          <span
+            class="font-display font-bold text-slate-300 text-sm tracking-wide"
+            >NMA Member</span
+          >
+          <span
+            class="font-display font-bold text-slate-300 text-sm tracking-wide"
+            >Government of Nepal</span
+          >
+          <span
+            class="font-display font-bold text-emerald-400 text-sm tracking-wide"
+            >TripAdvisor 5.0 ★</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Quick Inquiry Section -->
+    <section id="contact" class="py-24 bg-brand-surface relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div>
+            <span
+              class="text-brand-accent font-semibold text-xs tracking-widest uppercase"
+              >Get in Touch</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-display font-bold text-white mt-2 mb-6"
+            >
+              Plan Your Custom Himalayan Expedition
+            </h2>
+            <p class="text-slate-400 mb-8 leading-relaxed">
+              Have questions regarding permits, gear checklists, or custom route
+              customization? Our adventure architects in Kathmandu are available
+              24/7.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand-accent"
+                >
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400">Direct Inquiries</p>
+                  <p class="text-sm font-semibold text-white">
+                    +977 9800000000 / +977 9811111111
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand-accent"
+                >
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400">Email Correspondence</p>
+                  <p class="text-sm font-semibold text-white">
+                    info@innerhimalaya.com
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand-accent"
+                >
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400">Main Office</p>
+                  <p class="text-sm font-semibold text-white">
+                    Thamel-29, Kathmandu, Nepal
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Card -->
+          <div
+            class="bg-brand-charcoal/80 border border-white/10 p-8 rounded-3xl shadow-xl"
+          >
+            <form
+              class="space-y-4"
+              onsubmit="
+                event.preventDefault();
+                alert('Inquiry sent successfully!');
+              "
+            >
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    required
+                    placeholder="Alex Morgan"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    required
+                    placeholder="alex@example.com"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                  >Interested Expedition</label
+                >
+                <select
+                  class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors"
+                >
+                  <option>Everest Base Camp Trek</option>
+                  <option>Annapurna Sanctuary / ABC</option>
+                  <option>Scenic Mountain Flight</option>
+                  <option>Custom Trekking Route</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                  >Estimated Travel Dates & Notes</label
+                >
+                <textarea
+                  rows="3"
+                  placeholder="Number of travelers, preferred months, special requests..."
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-brand-accent to-orange-600 hover:opacity-95 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-orange-500/20 transition-all text-sm"
+              >
+                Send Trail Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#070c0e] border-t border-white/5 py-12">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500"
+      >
+        <p>© 2026 Inner Himalaya Trek & Tour Pvt. Ltd. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-300">Terms & Conditions</a>
+          <a href="#" class="hover:text-slate-300">Safety & Rescue</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      lucide.createIcons();
+
+      // GSAP Scroll Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from("#heroImage", {
+        scale: 1.2,
+        duration: 2,
+        ease: "power2.out",
+      });
+
+      // Glass navbar shrink on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("mainHeader");
+        if (window.scrollY > 40) {
+          header.classList.add("py-0");
+        } else {
+          header.classList.remove("py-0");
+        }
+      });
+    </script>
+  </body>
+</html>
